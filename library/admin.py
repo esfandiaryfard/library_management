@@ -10,6 +10,7 @@ admin.site.unregister(Group)
 Customize panel admin for writer managements
 """
 
+
 class UserAdmin(UserAdmin):
     fieldsets = (
         (None, {'fields': (_('username'))}),
