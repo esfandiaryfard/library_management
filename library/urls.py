@@ -4,7 +4,8 @@ from .views import *
 from django.urls import path
 
 book_list = BookViewset.as_view({
-    'get': 'index'
+    'get': 'index',
+    'post':'store'
 })
 
 urlpatterns = format_suffix_patterns([

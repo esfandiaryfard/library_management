@@ -20,3 +20,13 @@ class BookViewset(viewsets.ViewSet):
             return Response({"messages": _("DataLoaded"), "data": serializer.data})
         except Exception as e:
             return Response({"message": _("status500")}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    def store(self, request):
+        try:
+            serializer = serializers.BookSerializer(data=request.data)
+            if serializer.is_valid( ):
+                serializer.save(created_by=request.user.id)
+                return Response({"message": _("Added Successfully")}, status=status.HTTP_201_CREATED)
+            return Response({'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response({"message": _("status500")}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
