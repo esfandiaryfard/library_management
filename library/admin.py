@@ -13,9 +13,8 @@ Customize panel admin for writer managements
 
 class UserAdmin(UserAdmin):
     fieldsets = (
-        (None, {'fields': (_('username'))}),
+        (None, {'fields': (_('username'),)}),
 
-        (_('Personal info'), {'fields': (_('name'), _('last_name'), _('national_id'), _('book'))}),
-
+        (_('Personal info'), {'fields': (_('name'), _('last_name'), _('national_id'), _('book'))})
     )
 admin.site.register(Writer, UserAdmin)
