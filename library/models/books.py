@@ -20,5 +20,9 @@ class Book(models.Model):
         app_label = "library"
         db_table = "books"
 
+    @staticmethod
+    def get_books():
+        return Book.objects.all()
+
     def __str__(self):
         return self.name
