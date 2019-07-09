@@ -4,10 +4,11 @@ from django.utils.translation import gettext as _
 from .books import Book
 from django.contrib.auth.models import AbstractUser
 
-
 """
 Create model Writer, this model is an override of model user in django, but with added field based on requirements
 """
+
+
 class Writer(AbstractUser):
     book = models.ForeignKey(Book, related_name='books', blank=False, verbose_name=_('book'),
                                 on_delete=models.CASCADE, null=True)
