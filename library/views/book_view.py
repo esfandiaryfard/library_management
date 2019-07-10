@@ -24,7 +24,7 @@ class BookViewset(viewsets.ViewSet):
     def store(self, request):
         try:
             serializer = serializers.BookSerializer(data=request.data)
-            if serializer.is_valid( ):
+            if serializer.is_valid():
                 serializer.save(created_by=request.user)
                 return Response({"message": _("Added Successfully")}, status=status.HTTP_201_CREATED)
             return Response({'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
@@ -36,7 +36,7 @@ class BookViewset(viewsets.ViewSet):
             book = models.Book.get_book(pk)
             serializer = serializers.BookSerializer(book, data=request.data)
             if serializer.is_valid():
-                serializer.save(updated_by=request.user.username, updated_at=timezone.now())
+                serializer.save(updated_by=request.user, updated_at=timezone.now())
                 return Response({"message": _("Added Successfully")}, status=status.HTTP_205_RESET_CONTENT)
             return Response({'errors': serializer.errors}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
         except models.Book.DoesNotExist:
