@@ -45,3 +45,11 @@ class BookViewset(viewsets.ViewSet):
             return Response({"message": _("you can add just one pk")}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
         except Exception as e:
             return Response({"message": _("status500")}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    def delete(self, request, pk, format=None):
+        try:
+            book = models.Book.get_book(pk)
+            book.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except Exception as e:
+            return Response({"message": _("status500")}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

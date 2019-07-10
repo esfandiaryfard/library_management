@@ -25,7 +25,7 @@ class Book(models.Model):
         return Book.objects.all()
 
     def get_book(pk):
-        return Book.objects.get(pk = pk)
+        return Book.objects.get(pk=pk)
 
     def __str__(self):
         return self.name

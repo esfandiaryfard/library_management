@@ -10,7 +10,7 @@ book_list = BookViewset.as_view({
 
 book_item = BookViewset.as_view({
     'put': 'update',
-    # 'delete':'delete'
+    'delete':'delete'
 })
 
 urlpatterns = format_suffix_patterns([
